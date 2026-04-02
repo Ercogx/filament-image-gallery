@@ -99,7 +99,7 @@
     }
 
     function isAnyViewerOpen() {
-        return document.querySelectorAll('[data-viewer-gallery]').values().some(el => el._viewer && el._viewer.isShown);
+        return Array.from(document.querySelectorAll('[data-viewer-gallery]')).some(el => el._viewer && el._viewer.isShown);
     }
 
     function scan() {
