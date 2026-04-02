@@ -98,9 +98,17 @@
         }
     }
 
+    function isAnyViewerOpen() {
+        return Array.from(document.querySelectorAll('[data-viewer-gallery]')).some(el => el._viewer && el._viewer.isShown);
+    }
+
     function scan() {
         const galleries = document.querySelectorAll('[data-viewer-gallery]');
         if (galleries.length === 0) return;
+
+        // Skip reinitialization while a viewer is open to avoid closing it
+        // (e.g. during Livewire morph updates from notification polling)
+        if (isAnyViewerOpen()) return;
 
         // Ensure Viewer.js is loaded before initializing
         loadViewerCSS();
