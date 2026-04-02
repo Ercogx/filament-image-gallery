@@ -64,7 +64,7 @@
 
     function initOne(el) {
         if (!el || el._viewer || !isViewerAvailable()) return;
-        el._viewer = new Viewer(el, {
+        el._viewer = new Viewer(el, Object.assign({
             toolbar: {
                 zoomIn: 1,
                 zoomOut: 1,
@@ -86,7 +86,7 @@
             fullscreen: true,
             transition: true,
             title: false,
-        });
+        }, window.GalleryViewerDefaultOptions ?? {}));
     }
 
     function destroyOne(el) {
