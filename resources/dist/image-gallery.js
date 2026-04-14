@@ -86,7 +86,7 @@
             fullscreen: true,
             transition: true,
             title: false,
-        }, window.GalleryViewerDefaultOptions ?? {}));
+        }, window.GalleryViewerDefaultOptions ?? JSON.parse(el.dataset.viewerOptions) ?? {}));
     }
 
     function destroyOne(el) {
